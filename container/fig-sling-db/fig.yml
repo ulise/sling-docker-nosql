@@ -7,7 +7,7 @@ nginx01:
    - "80:80"
 sling01:
   image: apachesling/sling 
-  command: /bin/bash -c "exec java -Xmx384M -agentlib:jdwp=transport=dt_socket,address=30303,server=y,suspend=n -jar org.apache.sling.launchpad.jar -Dsling.run.modes=oak,oak_mongo -Doak.mongo.uri=mongodb://slingcassandra_mongodb01_1:27017/oak"
+  command: /bin/bash -c "exec java -Xmx384M -agentlib:jdwp=transport=dt_socket,address=30303,server=y,suspend=n -jar org.apache.sling.launchpad.jar -Dsling.run.modes=oak,oak_mongo -Doak.mongo.uri=mongodb://mongodb01:27017/oak"
   links:
    - mongodb01
   ports:
@@ -16,7 +16,7 @@ mongodb01:
   image: mongo:latest
 sling02:
   image: apachesling/sling 
-  command: /bin/bash -c "exec java -Xmx384M -agentlib:jdwp=transport=dt_socket,address=30303,server=y,suspend=n -jar org.apache.sling.launchpad.jar -Dsling.run.modes=oak,oak_mongo -Doak.mongo.uri=mongodb://slingcassandra_mongodb01_1:27017/oak"
+  command: /bin/bash -c "exec java -Xmx384M -agentlib:jdwp=transport=dt_socket,address=30303,server=y,suspend=n -jar org.apache.sling.launchpad.jar -Dsling.run.modes=oak,oak_mongo -Doak.mongo.uri=mongodb://mongodb02:27017/oak"
   links:
    - mongodb02
   ports:
