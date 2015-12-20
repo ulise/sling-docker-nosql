@@ -1,12 +1,10 @@
 nginx01:
-  image: nginx:latest
+  build: nginx
   links:
    - sling01
    - sling02
   ports:
    - "80:80"
-  volumes:
-    - /vagrant/container/fig-sling-db/nginx.conf:/etc/nginx/nginx.conf.new
 sling01:
   image: apachesling/sling 
   command: /bin/bash -c "exec java -Xmx384M -agentlib:jdwp=transport=dt_socket,address=30303,server=y,suspend=n -jar org.apache.sling.launchpad.jar -Dsling.run.modes=oak,oak_mongo -Doak.mongo.uri=mongodb://mongodb:27017/oak"
